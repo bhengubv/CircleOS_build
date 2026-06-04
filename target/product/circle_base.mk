@@ -21,8 +21,8 @@ PRODUCT_VERSION_PATCH := 0
 CIRCLE_VERSION        := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_PATCH)-alpha
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.circle.version=$(CIRCLE_VERSION) \
-    ro.circle.build.type=$(TARGET_BUILD_VARIANT) \
+    ro.vendor.circle.version=$(CIRCLE_VERSION) \
+    ro.vendor.circle.build.type=$(TARGET_BUILD_VARIANT) \
     ro.build.display.id=CircleOS-$(CIRCLE_VERSION)-$(shell date +%Y%m%d)
 
 # Privacy framework services (registered in SystemServer)
