@@ -31,5 +31,9 @@ PRODUCT_PACKAGES += \
     CirclePrivacyManagerService \
     CirclePermissionService
 
-# SELinux
-BOARD_SEPOLICY_DIRS += vendor/circle/sepolicy
+# SELinux policy lives in vendor/circle/sepolicy and is registered as
+# system_ext sepolicy via SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS in
+# vendor/circle/config/common.mk (which this product inherits via circle.mk).
+# Do NOT also add it to BOARD_SEPOLICY_DIRS — that would route the same
+# files to vendor partition where the namespace check rejects the
+# circle_* context names and the OEM brand property prefix.
