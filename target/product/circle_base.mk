@@ -20,9 +20,17 @@ PRODUCT_VERSION_MINOR := 1
 PRODUCT_VERSION_PATCH := 0
 CIRCLE_VERSION        := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_PATCH)-alpha
 
-PRODUCT_PROPERTY_OVERRIDES += \
+# Round 21: Use partition-specific PRODUCT_SYSTEM_PROPERTIES instead of
+# legacy PRODUCT_PROPERTY_OVERRIDES. Round 20 (vendor/circle 442644e)
+# labelled ro.circle.* as system_property_type via system_public_prop(
+# circle_prop) — so writes belong in PRODUCT_SYSTEM_PROPERTIES which
+# targets /system/build.prop. PRODUCT_PROPERTY_OVERRIDES still works
+# for standard build properties like ro.build.display.id.
+PRODUCT_SYSTEM_PROPERTIES += \
     ro.circle.version=$(CIRCLE_VERSION) \
-    ro.circle.build.type=$(TARGET_BUILD_VARIANT) \
+    ro.circle.build.type=$(TARGET_BUILD_VARIANT)
+
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.display.id=CircleOS-$(CIRCLE_VERSION)-$(shell date +%Y%m%d)
 
 # Privacy framework services (registered in SystemServer)
