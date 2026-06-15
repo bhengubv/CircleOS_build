@@ -33,6 +33,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.display.id=CircleOS-$(CIRCLE_VERSION)-$(shell date +%Y%m%d)
 
+
+# Release signing keys — built from vendor/circle/release/security/.
+# Every key type (releasekey, platform, shared, media, networkstack) lives
+# in that directory; AOSP resolves them relative to the directory of the
+# key named here. The .pk8 files are mode 600 and .gitignored.
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/circle/release/security/releasekey
 # Privacy framework services (registered in SystemServer)
 PRODUCT_PACKAGES += \
     CircleSettings \
