@@ -41,9 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/circle/release/security/releasekey
 # Privacy framework services (registered in SystemServer)
 PRODUCT_PACKAGES += \
-    CircleSettings \
-    CirclePrivacyManagerService \
-    CirclePermissionService
+    CircleSettings
 
 # SELinux policy lives in vendor/circle/sepolicy and is registered as
 # system_ext sepolicy via SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS in
